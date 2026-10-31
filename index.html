@@ -133,6 +133,7 @@ footer nav { display: flex; gap: 20px; flex-wrap: wrap; }
   .step, .split { grid-template-columns: minmax(0, 1fr); gap: 20px; }
   .step:nth-child(even) .copy { order: 0; }
   .tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .tile:last-child:nth-child(odd) { grid-column: 1 / -1; } /* an odd tile out fills its row */
   .limits { grid-template-columns: minmax(0, 1fr); }
   .tools li { grid-template-columns: minmax(0, 1fr); gap: 2px; }
 }
@@ -198,14 +199,14 @@ footer nav { display: flex; gap: 20px; flex-wrap: wrap; }
           <figure class="shot"><img src="img/calibrate.jpg" width="1280" height="720" alt="Court calibration: green lines drawn over the court after four clicks"></figure>
         </li>
         <li class="step">
-          <div class="copy"><span class="num">3</span><h3>Read the numbers</h3><p>Distance, average and peak speed, time behind the baseline, at the baseline, mid-court and at the net, the left/center/right split, and a heatmap for each player. When a measurement is rough, the value is marked with ~ instead of looking exact.</p></div>
+          <div class="copy"><span class="num">3</span><h3>Read the numbers</h3><p>Distance, average and peak speed, time behind the baseline, at the baseline, mid-court and at the net, the left/center/right split, and a heatmap for each player. When a measurement is rough, the value is marked with ~ instead of looking exact, and zone shares come with a range.</p></div>
           <div class="pair">
             <figure class="shot"><img src="img/metrics.jpg" width="1180" height="664" alt="Metrics table for Player A and Player B"></figure>
             <figure class="shot"><img src="img/heatmap.jpg" width="1280" height="720" alt="Bird's-eye heatmaps of where each player spent their time"></figure>
           </div>
         </li>
         <li class="step">
-          <div class="copy"><span class="num">4</span><h3>Ask the coach assistant</h3><p>A Muse Spark agent picks its own tools, jumps the video to the moment it talks about, and can watch that clip itself. Every number in its answer is checked against the data before the coach sees it.</p></div>
+          <div class="copy"><span class="num">4</span><h3>Ask the coach assistant</h3><p>A Muse Spark agent picks its own tools, jumps the video to the moment it talks about, and can watch that clip itself. Every number in its answer is checked against the data before the coach sees it, and so is every number in the coach report.</p></div>
           <figure class="shot"><img src="img/agent.jpg" width="1024" height="373" alt="The coach assistant's answer in the app, with its steps and a Verified badge"></figure>
         </li>
         <li class="step">
@@ -227,8 +228,11 @@ footer nav { display: flex; gap: 20px; flex-wrap: wrap; }
         <div class="tile"><span class="v">67%</span><span class="k">of Player A's time behind the baseline</span></div>
         <div class="tile"><span class="v">3.81 m/s</span><span class="k">Player A's fastest one-second run, at 6:44</span></div>
         <div class="tile"><span class="v">2.4 → ~0.5 m</span><span class="k">far-side depth noise before and after the net fix</span></div>
+        <div class="tile"><span class="v">~0.4 m</span><span class="k">Player A's position error, against feet marked by hand in 70 frames</span></div>
+        <div class="tile"><span class="v">1.35 → 1.08 m</span><span class="k">far player's position error before and after our post-submission fix, on frames not used to build it</span></div>
+        <div class="tile"><span class="v">8 / 8</span><span class="k">assistant answers verified and correct in a live test, every number checked</span></div>
       </div>
-      <p class="note">From our coach's training session. With a low camera the net hides the far player's feet, so CourtSense takes the lowest box bottom within ±0.5 s.</p>
+      <p class="note">From our coach's training session. With a low camera the net hides the far player's feet, so the far player's numbers stay marked as rough, with ranges. Errors are measured against feet marked by hand. Details are in the <a href="https://github.com/EmirCobanOfficial/courtsense#accuracy-measured">repository</a>.</p>
     </div>
   </section>
 
@@ -299,7 +303,7 @@ footer nav { display: flex; gap: 20px; flex-wrap: wrap; }
       <h2>What it doesn't do yet</h2>
       <ul class="limits">
         <li><h3>No ball tracking</h3><p>In our footage SAM 3.1 confused ceiling lights and signs with the ball, so there are no shot or score statistics yet.</p></li>
-        <li><h3>Rough far-side depth</h3><p>With a low camera the far player's forward and back position is rough. The app marks it instead of guessing. Left and right stay reliable.</p></li>
+        <li><h3>Rough far-side depth</h3><p>With a low camera the far player's forward and back position is rough: about 1 m of error on hand-marked frames. The app marks it and gives zone ranges instead of guessing. Left and right stay reliable.</p></li>
         <li><h3>Camera drift</h3><p>Slow drift of the camera's gimbal over a long session is not compensated yet.</p></li>
       </ul>
     </div>
