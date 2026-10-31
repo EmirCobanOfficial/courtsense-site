@@ -206,7 +206,7 @@ footer nav { display: flex; gap: 20px; flex-wrap: wrap; }
           </div>
         </li>
         <li class="step">
-          <div class="copy"><span class="num">4</span><h3>Ask the coach assistant</h3><p>A Muse Spark agent picks its own tools, jumps the video to the moment it talks about, and can watch that clip itself. Every number in its answer is checked against the data before the coach sees it, and so is every number in the coach report.</p></div>
+          <div class="copy"><span class="num">4</span><h3>Ask the coach assistant</h3><p>A Muse Spark agent picks its own tools, jumps the video to the moment it talks about, and can watch that clip itself. The coach can type the question or say it. Every number in its answer is checked against the data before the coach sees it, and so is every number in the coach report.</p></div>
           <figure class="shot"><img src="img/agent.jpg" width="1024" height="373" alt="The coach assistant's answer in the app, with its steps and a Verified badge"></figure>
         </li>
         <li class="step">
@@ -279,6 +279,7 @@ footer nav { display: flex; gap: 20px; flex-wrap: wrap; }
           <tbody>
             <tr><td>SAM 3.1</td><td>Finds and tracks both players in every frame of a session from the text prompt "tennis player", in one streamed request through the Meta Model API.</td></tr>
             <tr><td>Muse Spark 1.3</td><td>Runs the coach assistant: picks its tools, watches short clips with video input, answers in English or Turkish. Also writes the coach report.</td></tr>
+            <tr><td>Muse Voice Transcribe</td><td>Lets the coach ask the assistant by voice, in English or Turkish. The words land in the question box to check before asking.</td></tr>
             <tr><td><code>@meta-sam/parser</code></td><td>Reads SAM 3.1's streamed output into boxes and masks per frame.</td></tr>
             <tr><td><code>@meta-sam/react</code>, <code>@meta-sam/graphics</code></td><td>Play the session in the browser with each player's mask drawn in their color.</td></tr>
           </tbody>
