@@ -231,6 +231,10 @@ footer nav { display: flex; gap: 20px; flex-wrap: wrap; }
           <div class="copy"><span class="num">5</span><h3>Get the report</h3><p>After each session Muse Spark writes a short report from measured numbers only, in English or Turkish, our coach's language.</p></div>
           <figure class="shot"><img src="img/report.jpg" width="1280" height="720" alt="The coach report written by Muse Spark"></figure>
         </li>
+        <li class="step">
+          <div class="copy"><span class="num">6</span><h3>Draw the practice card</h3><p>The coach writes a goal for the next practice, and Muse Image draws it as a drill on a top-down court, starting from where the player mostly stood. The picture holds no numbers; the numbers stay in the caption, from the measurements.</p></div>
+          <figure class="shot"><img src="img/card.jpg" width="1140" height="698" alt="A practice card drawn by Muse Image, with the measured numbers in the caption"></figure>
+        </li>
       </ol>
     </div>
   </section>
@@ -298,6 +302,7 @@ footer nav { display: flex; gap: 20px; flex-wrap: wrap; }
             <tr><td>SAM 3.1</td><td>Finds and tracks both players in every frame of a session from the text prompt "tennis player", in one streamed request through the Meta Model API.</td></tr>
             <tr><td>Muse Spark 1.3</td><td>Runs the coach assistant: picks its tools, watches short clips with video input, answers in English or Turkish. Also writes the coach report.</td></tr>
             <tr><td>Muse Voice Transcribe</td><td>Lets the coach ask the assistant by voice, in English or Turkish. The words land in the question box to check before asking.</td></tr>
+            <tr><td>Muse Image</td><td>Draws the coach's goal for the next practice as a top-down drill card. The picture holds no numbers; the caption's numbers come from the measurements.</td></tr>
             <tr><td><code>@meta-sam/parser</code></td><td>Reads SAM 3.1's streamed output into boxes and masks per frame.</td></tr>
             <tr><td><code>@meta-sam/react</code>, <code>@meta-sam/graphics</code></td><td>Play the session in the browser with each player's mask drawn in their color.</td></tr>
           </tbody>

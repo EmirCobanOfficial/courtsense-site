@@ -231,6 +231,10 @@ footer nav { display: flex; gap: 20px; flex-wrap: wrap; }
           <div class="copy"><span class="num">5</span><h3>Den Bericht erhalten</h3><p>Nach jeder Einheit schreibt Muse Spark einen kurzen Bericht nur aus gemessenen Zahlen, auf Englisch oder Türkisch, der Sprache unseres Trainers.</p></div>
           <figure class="shot"><img src="../img/report.jpg" width="1280" height="720" alt="Der Trainerbericht, geschrieben von Muse Spark"></figure>
         </li>
+        <li class="step">
+          <div class="copy"><span class="num">6</span><h3>Die Trainingskarte zeichnen</h3><p>Der Trainer schreibt ein Ziel für die nächste Einheit, und Muse Image zeichnet es als Übung auf einem Platz aus der Vogelperspektive, ausgehend davon, wo der Spieler meist stand. Das Bild enthält keine Zahlen; die Zahlen stehen in der Bildunterschrift, aus den Messungen.</p></div>
+          <figure class="shot"><img src="../img/card.jpg" width="1140" height="698" alt="Eine von Muse Image gezeichnete Trainingskarte, mit den gemessenen Zahlen in der Bildunterschrift"></figure>
+        </li>
       </ol>
     </div>
   </section>
@@ -298,6 +302,7 @@ footer nav { display: flex; gap: 20px; flex-wrap: wrap; }
             <tr><td>SAM 3.1</td><td>Findet beide Spieler und verfolgt sie in jedem Bild einer Einheit, ausgehend vom Text-Prompt "tennis player", in einer einzigen gestreamten Anfrage über die Meta Model API.</td></tr>
             <tr><td>Muse Spark 1.3</td><td>Betreibt den Trainer-Assistenten: wählt seine Werkzeuge, sieht sich kurze Clips per Video-Eingabe an und antwortet auf Englisch oder Türkisch. Schreibt auch den Trainerbericht.</td></tr>
             <tr><td>Muse Voice Transcribe</td><td>Lässt den Trainer den Assistenten per Sprache fragen, auf Englisch oder Türkisch. Die Worte landen im Fragefeld und können vor dem Absenden geprüft werden.</td></tr>
+            <tr><td>Muse Image</td><td>Zeichnet das Ziel des Trainers für die nächste Einheit als Übungskarte aus der Vogelperspektive. Das Bild enthält keine Zahlen; die Zahlen der Bildunterschrift stammen aus den Messungen.</td></tr>
             <tr><td><code>@meta-sam/parser</code></td><td>Liest die gestreamte Ausgabe von SAM 3.1 als Boxen und Masken pro Bild ein.</td></tr>
             <tr><td><code>@meta-sam/react</code>, <code>@meta-sam/graphics</code></td><td>Spielen die Einheit im Browser ab, mit der Maske jedes Spielers in seiner Farbe.</td></tr>
           </tbody>
