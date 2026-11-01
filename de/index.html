@@ -209,7 +209,7 @@ footer nav { display: flex; gap: 20px; flex-wrap: wrap; }
       <h2>Vom Video des Trainers auf den Platz, in Metern</h2>
       <ol class="steps">
         <li class="step">
-          <div class="copy"><span class="num">1</span><h3>Einheit hochladen</h3><p>Der Trainer wählt den Teil des Videos, der analysiert werden soll. Eine einzige gestreamte SAM-3.1-Anfrage findet beide Spieler und verfolgt sie in jedem Bild. Eine 12-minütige Einheit hat 10,688 Bilder und kostet etwa $2.14.</p></div>
+          <div class="copy"><span class="num">1</span><h3>Einheit hochladen</h3><p>Der Trainer wählt den Teil des Videos, der analysiert werden soll. Eine einzige gestreamte SAM-3.1-Anfrage findet beide Spieler und verfolgt sie Bild für Bild. Eine 12-minütige Einheit hat 10,688 Bilder und kostet etwa $2.14.</p></div>
           <figure class="shot"><img src="../img/upload.jpg" width="1280" height="720" alt="Das Upload-Formular mit Start- und Endzeit der Analyse"></figure>
         </li>
         <li class="step">
@@ -299,7 +299,7 @@ footer nav { display: flex; gap: 20px; flex-wrap: wrap; }
         <table>
           <thead><tr><th>Meta-Modell oder -Paket</th><th>Was es in CourtSense tut</th></tr></thead>
           <tbody>
-            <tr><td>SAM 3.1</td><td>Findet beide Spieler und verfolgt sie in jedem Bild einer Einheit, ausgehend vom Text-Prompt "tennis player", in einer einzigen gestreamten Anfrage über die Meta Model API.</td></tr>
+            <tr><td>SAM 3.1</td><td>Findet beide Spieler ausgehend vom Text-Prompt "tennis player" und verfolgt sie Bild für Bild durch die Einheit, in einer einzigen gestreamten Anfrage über die Meta Model API.</td></tr>
             <tr><td>Muse Spark 1.3</td><td>Betreibt den Trainer-Assistenten: wählt seine Werkzeuge, sieht sich kurze Clips per Video-Eingabe an und antwortet auf Englisch oder Türkisch. Schreibt auch den Trainerbericht.</td></tr>
             <tr><td>Muse Voice Transcribe</td><td>Lässt den Trainer den Assistenten per Sprache fragen, auf Englisch oder Türkisch. Die Worte landen im Fragefeld und können vor dem Absenden geprüft werden.</td></tr>
             <tr><td>Muse Image</td><td>Zeichnet das Ziel des Trainers für die nächste Einheit als Übungskarte aus der Vogelperspektive. Das Bild enthält keine Zahlen; die Zahlen der Bildunterschrift stammen aus den Messungen.</td></tr>

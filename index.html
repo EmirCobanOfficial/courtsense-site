@@ -209,7 +209,7 @@ footer nav { display: flex; gap: 20px; flex-wrap: wrap; }
       <h2>From the coach's video to the court in meters</h2>
       <ol class="steps">
         <li class="step">
-          <div class="copy"><span class="num">1</span><h3>Upload the session</h3><p>The coach picks the part of the video to analyze. One streamed SAM 3.1 request finds and tracks both players through every frame. A 12-minute session is 10,688 frames and costs about $2.14.</p></div>
+          <div class="copy"><span class="num">1</span><h3>Upload the session</h3><p>The coach picks the part of the video to analyze. One streamed SAM 3.1 request finds both players and tracks them frame by frame. A 12-minute session is 10,688 frames and costs about $2.14.</p></div>
           <figure class="shot"><img src="img/upload.jpg" width="1280" height="720" alt="The upload form with the analysis start and end times"></figure>
         </li>
         <li class="step">
@@ -299,7 +299,7 @@ footer nav { display: flex; gap: 20px; flex-wrap: wrap; }
         <table>
           <thead><tr><th>Meta model or package</th><th>What it does in CourtSense</th></tr></thead>
           <tbody>
-            <tr><td>SAM 3.1</td><td>Finds and tracks both players in every frame of a session from the text prompt "tennis player", in one streamed request through the Meta Model API.</td></tr>
+            <tr><td>SAM 3.1</td><td>Finds both players from the text prompt "tennis player" and tracks them frame by frame through a session, in one streamed request through the Meta Model API.</td></tr>
             <tr><td>Muse Spark 1.3</td><td>Runs the coach assistant: picks its tools, watches short clips with video input, answers in English or Turkish. Also writes the coach report.</td></tr>
             <tr><td>Muse Voice Transcribe</td><td>Lets the coach ask the assistant by voice, in English or Turkish. The words land in the question box to check before asking.</td></tr>
             <tr><td>Muse Image</td><td>Draws the coach's goal for the next practice as a top-down drill card. The picture holds no numbers; the caption's numbers come from the measurements.</td></tr>

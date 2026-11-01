@@ -209,7 +209,7 @@ footer nav { display: flex; gap: 20px; flex-wrap: wrap; }
       <h2>コーチの動画から、メートル単位のコートへ</h2>
       <ol class="steps">
         <li class="step">
-          <div class="copy"><span class="num">1</span><h3>練習をアップロード</h3><p>コーチが動画の分析したい部分を選びます。SAM 3.1 へのストリーミングリクエスト 1 回で両選手を見つけ、すべてのフレームで追跡します。12 分の練習は 10,688 フレームで、費用は約 $2.14 です。</p></div>
+          <div class="copy"><span class="num">1</span><h3>練習をアップロード</h3><p>コーチが動画の分析したい部分を選びます。SAM 3.1 へのストリーミングリクエスト 1 回で両選手を見つけ、フレームごとに追跡します。12 分の練習は 10,688 フレームで、費用は約 $2.14 です。</p></div>
           <figure class="shot"><img src="../img/upload.jpg" width="1280" height="720" alt="分析の開始・終了時刻を入れるアップロード画面"></figure>
         </li>
         <li class="step">
@@ -299,7 +299,7 @@ footer nav { display: flex; gap: 20px; flex-wrap: wrap; }
         <table>
           <thead><tr><th>Meta のモデル・パッケージ</th><th>CourtSense での役割</th></tr></thead>
           <tbody>
-            <tr><td>SAM 3.1</td><td>テキストプロンプト "tennis player" から、練習のすべてのフレームで両選手を見つけて追跡します。Meta Model API へのストリーミングリクエスト 1 回で行います。</td></tr>
+            <tr><td>SAM 3.1</td><td>テキストプロンプト "tennis player" から両選手を見つけ、練習全体をフレームごとに追跡します。Meta Model API へのストリーミングリクエスト 1 回で行います。</td></tr>
             <tr><td>Muse Spark 1.3</td><td>コーチアシスタントを動かします。ツールを選び、動画入力で短いクリップを見て、英語かトルコ語で答えます。コーチレポートも書きます。</td></tr>
             <tr><td>Muse Voice Transcribe</td><td>コーチが英語かトルコ語で、声でアシスタントに質問できるようにします。文字起こしは質問欄に入るので、送る前に確認できます。</td></tr>
             <tr><td>Muse Image</td><td>コーチの次の練習の目標を、真上から見たドリルカードとして描きます。画像に数字はなく、キャプションの数字は測定値です。</td></tr>
