@@ -11,6 +11,16 @@
 <meta property="og:image" content="https://emircobanofficial.github.io/courtsense-site/img/hero.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="img/icon.svg" type="image/svg+xml">
+<link rel="alternate" hreflang="en" href="https://emircobanofficial.github.io/courtsense-site/">
+<link rel="alternate" hreflang="tr" href="https://emircobanofficial.github.io/courtsense-site/tr/">
+<link rel="alternate" hreflang="es" href="https://emircobanofficial.github.io/courtsense-site/es/">
+<link rel="alternate" hreflang="pt-BR" href="https://emircobanofficial.github.io/courtsense-site/pt-br/">
+<link rel="alternate" hreflang="hi" href="https://emircobanofficial.github.io/courtsense-site/hi/">
+<link rel="alternate" hreflang="zh-CN" href="https://emircobanofficial.github.io/courtsense-site/zh-cn/">
+<link rel="alternate" hreflang="ja" href="https://emircobanofficial.github.io/courtsense-site/ja/">
+<link rel="alternate" hreflang="de" href="https://emircobanofficial.github.io/courtsense-site/de/">
+<link rel="alternate" hreflang="ru" href="https://emircobanofficial.github.io/courtsense-site/ru/">
+<link rel="alternate" hreflang="x-default" href="https://emircobanofficial.github.io/courtsense-site/">
 <title>CourtSense</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -56,6 +66,13 @@ p { margin: 0; }
 .top nav { display: flex; gap: 20px; flex-wrap: wrap; font-size: 15px; }
 .top nav a { color: var(--muted); text-decoration: none; }
 .top nav a:hover { color: var(--fg); }
+.lang { position: relative; }
+.lang summary { list-style: none; cursor: pointer; color: var(--muted); white-space: nowrap; }
+.lang summary::-webkit-details-marker { display: none; }
+.lang summary:hover, .lang[open] summary { color: var(--fg); }
+.lang ul { position: absolute; right: 0; top: calc(100% + 10px); z-index: 10; margin: 0; padding: 6px; list-style: none; min-width: 200px; background: var(--band); border: 1px solid var(--line); border-radius: 12px; box-shadow: 0 16px 40px rgba(0, 0, 0, .45); }
+.lang li a { display: block; padding: 8px 12px; border-radius: 8px; }
+.lang li a[aria-current] { color: var(--fg); background: rgba(255, 255, 255, .06); }
 
 /* hero */
 .hero { padding-block: 40px 72px; }
@@ -157,6 +174,7 @@ footer nav { display: flex; gap: 20px; flex-wrap: wrap; }
     <a href="https://youtu.be/mXLhQJ-pKrA">Demo video</a>
     <a href="https://github.com/EmirCobanOfficial/courtsense">Code</a>
     <a href="https://x.com/Emir897785/status/2115486501047865471">On X</a>
+    <details class="lang"><summary title="Language">🌐 <span>English</span></summary><ul><li><a href="./" hreflang="en" lang="en" aria-current="page">English</a></li><li><a href="tr/" hreflang="tr" lang="tr">Türkçe</a></li><li><a href="es/" hreflang="es" lang="es">Español</a></li><li><a href="pt-br/" hreflang="pt-BR" lang="pt-BR">Português (Brasil)</a></li><li><a href="hi/" hreflang="hi" lang="hi">हिन्दी</a></li><li><a href="zh-cn/" hreflang="zh-CN" lang="zh-CN">中文（简体）</a></li><li><a href="ja/" hreflang="ja" lang="ja">日本語</a></li><li><a href="de/" hreflang="de" lang="de">Deutsch</a></li><li><a href="ru/" hreflang="ru" lang="ru">Русский</a></li></ul></details>
   </nav>
 </header>
 
@@ -201,7 +219,7 @@ footer nav { display: flex; gap: 20px; flex-wrap: wrap; }
         <li class="step">
           <div class="copy"><span class="num">3</span><h3>Read the numbers</h3><p>Distance, average and peak speed, time behind the baseline, at the baseline, mid-court and at the net, the left/center/right split, and a heatmap for each player. When a measurement is rough, the value is marked with ~ instead of looking exact, and zone shares come with a range.</p></div>
           <div class="pair">
-            <figure class="shot"><img src="img/metrics.jpg" width="1180" height="664" alt="Metrics table for Player A and Player B"></figure>
+            <figure class="shot"><img src="img/metrics.jpg" width="1280" height="720" alt="Metrics table for Player A and Player B"></figure>
             <figure class="shot"><img src="img/heatmap.jpg" width="1280" height="720" alt="Bird's-eye heatmaps of where each player spent their time"></figure>
           </div>
         </li>
@@ -227,7 +245,7 @@ footer nav { display: flex; gap: 20px; flex-wrap: wrap; }
         <div class="tile"><span class="v">567 m</span><span class="k">run by Player A</span></div>
         <div class="tile"><span class="v">67%</span><span class="k">of Player A's time behind the baseline</span></div>
         <div class="tile"><span class="v">3.81 m/s</span><span class="k">Player A's fastest one-second run, at 6:44</span></div>
-        <div class="tile"><span class="v">2.4 → ~0.5 m</span><span class="k">far-side depth noise before and after the net fix</span></div>
+        <div class="tile"><span class="v">52–80%</span><span class="k">Player B's time behind the baseline, given as a range because far-side depth is rough</span></div>
         <div class="tile"><span class="v">~0.5 m</span><span class="k">Player A's position error: 0.46 m on 30 hand-marked frames not used to build the method</span></div>
         <div class="tile"><span class="v">1.35 → 1.08 m</span><span class="k">far player's position error before and after our post-submission fix, on frames not used to build it</span></div>
         <div class="tile"><span class="v">8 / 8</span><span class="k">assistant answers verified and correct in a live test, every number checked</span></div>
@@ -262,7 +280,7 @@ footer nav { display: flex; gap: 20px; flex-wrap: wrap; }
             <li><code>minute_breakdown</code><span>meters per minute</span></li>
             <li><code>show_moment</code><span>jumps the coach's video to a time</span></li>
             <li><code>look_at_clip</code><span>cuts 2–8 seconds and asks Muse Spark what happens</span></li>
-            <li><code>answer</code><span>the final answer: every number must appear in an earlier tool result, or it goes back to the model</span></li>
+            <li><code>answer</code><span>the final answer: every number is listed as a claim and checked against the session's data, or it goes back to the model</span></li>
           </ul>
         </div>
       </div>

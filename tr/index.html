@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="CourtSense, bir tenis antrenörünün sıradan antrenman videosunu Meta SAM 3.1 ve Muse Spark ile hareket verisine dönüştürür. Meta Global AI Developer Hackathon'da geliştirildi.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="CourtSense">
+<meta property="og:description" content="CourtSense, bir tenis antrenörünün sıradan antrenman videosunu Meta SAM 3.1 ve Muse Spark ile hareket verisine dönüştürür. Meta Global AI Developer Hackathon'da geliştirildi.">
+<meta property="og:url" content="https://emircobanofficial.github.io/courtsense-site/tr/">
+<meta property="og:image" content="https://emircobanofficial.github.io/courtsense-site/img/hero.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../img/icon.svg" type="image/svg+xml">
+<link rel="alternate" hreflang="en" href="https://emircobanofficial.github.io/courtsense-site/">
+<link rel="alternate" hreflang="tr" href="https://emircobanofficial.github.io/courtsense-site/tr/">
+<link rel="alternate" hreflang="es" href="https://emircobanofficial.github.io/courtsense-site/es/">
+<link rel="alternate" hreflang="pt-BR" href="https://emircobanofficial.github.io/courtsense-site/pt-br/">
+<link rel="alternate" hreflang="hi" href="https://emircobanofficial.github.io/courtsense-site/hi/">
+<link rel="alternate" hreflang="zh-CN" href="https://emircobanofficial.github.io/courtsense-site/zh-cn/">
+<link rel="alternate" hreflang="ja" href="https://emircobanofficial.github.io/courtsense-site/ja/">
+<link rel="alternate" hreflang="de" href="https://emircobanofficial.github.io/courtsense-site/de/">
+<link rel="alternate" hreflang="ru" href="https://emircobanofficial.github.io/courtsense-site/ru/">
+<link rel="alternate" hreflang="x-default" href="https://emircobanofficial.github.io/courtsense-site/">
+<title>CourtSense</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,500..900&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: an indoor court at night. A hero that pairs the coach's camera frame with the court in meters, a five-step process, tiles from one real session, the assistant's real transcript, then the plain facts. One dark look, matching the app and the demo video. */
+:root {
+  color-scheme: dark;
+  --bg: #070b14;
+  --band: #0c1321;
+  --panel: #111a2b;
+  --line: #1e2a3f;
+  --fg: #eef2f8;
+  --muted: #9ba7bb;
+  --a: #4d94ff;
+  --b: #f0913a;
+  --gold: #ffc857;
+  --ok: #4ade80;
+  --font-display: "Archivo", "Arial Narrow", system-ui, sans-serif;
+  --font-body: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--fg); font: 400 17px/1.6 var(--font-body); -webkit-font-smoothing: antialiased; }
+img { max-width: 100%; }
+a { color: var(--a); }
+a:focus-visible, .btn:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+section { padding-block: 72px; }
+section + section { border-top: 1px solid var(--line); }
+h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; margin: 0; }
+h2 { font-size: clamp(30px, 4.2vw, 46px); font-stretch: 80%; font-weight: 800; letter-spacing: -0.5px; line-height: 1.05; }
+h3 { font-size: 22px; font-weight: 700; font-stretch: 95%; }
+p { margin: 0; }
+.lead { color: var(--muted); max-width: 62ch; font-size: 19px; }
+.eyebrow { font: 500 13px/1 var(--font-mono); letter-spacing: 1.2px; text-transform: uppercase; color: var(--gold); }
+.stack { display: grid; gap: 16px; }
+
+/* header */
+.top { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding-block: 20px; }
+.brand { display: flex; align-items: center; gap: 12px; color: var(--fg); text-decoration: none; font: 800 22px/1 var(--font-display); letter-spacing: -0.3px; }
+.brand b { background: linear-gradient(90deg, #7fb2ff, var(--gold) 60%, var(--b)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.top nav { display: flex; gap: 20px; flex-wrap: wrap; font-size: 15px; }
+.top nav a { color: var(--muted); text-decoration: none; }
+.top nav a:hover { color: var(--fg); }
+.lang { position: relative; }
+.lang summary { list-style: none; cursor: pointer; color: var(--muted); white-space: nowrap; }
+.lang summary::-webkit-details-marker { display: none; }
+.lang summary:hover, .lang[open] summary { color: var(--fg); }
+.lang ul { position: absolute; right: 0; top: calc(100% + 10px); z-index: 10; margin: 0; padding: 6px; list-style: none; min-width: 200px; background: var(--band); border: 1px solid var(--line); border-radius: 12px; box-shadow: 0 16px 40px rgba(0, 0, 0, .45); }
+.lang li a { display: block; padding: 8px 12px; border-radius: 8px; }
+.lang li a[aria-current] { color: var(--fg); background: rgba(255, 255, 255, .06); }
+
+/* hero */
+.hero { padding-block: 40px 72px; }
+.hero .stack { gap: 22px; }
+.hero h1 { font-size: clamp(44px, 8vw, 104px); font-stretch: 75%; font-weight: 900; line-height: 0.95; letter-spacing: -1px; text-transform: uppercase; }
+.hero h1 span { color: var(--gold); }
+.ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+.btn { display: inline-flex; align-items: center; gap: 10px; padding: 13px 22px; border-radius: 999px; font: 600 16px/1 var(--font-body); text-decoration: none; border: 1px solid var(--line); color: var(--fg); background: var(--panel); }
+.btn.primary { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+.btn:hover { border-color: var(--muted); }
+.shot { margin: 8px 0 0; display: grid; gap: 10px; }
+.shot img { display: block; width: 100%; height: auto; border-radius: 14px; border: 1px solid var(--line); }
+.shot figcaption { color: var(--muted); font-size: 14px; }
+.legend { display: inline-flex; gap: 16px; font: 500 13px/1 var(--font-mono); color: var(--muted); }
+.dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; vertical-align: -1px; }
+
+/* steps: a real sequence, so numbered */
+.steps { list-style: none; margin: 40px 0 0; padding: 0; display: grid; gap: 56px; }
+.step { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 36px; align-items: center; }
+.step:nth-child(even) .copy { order: 2; }
+.copy { display: grid; gap: 12px; align-content: start; min-width: 0; }
+.num { font: 800 15px/1 var(--font-mono); color: var(--bg); background: var(--gold); width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; }
+.copy p { color: var(--muted); }
+.pair { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+/* numbers */
+.tiles { margin-top: 36px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
+.tile { background: var(--band); padding: 26px 24px; display: grid; gap: 6px; align-content: start; }
+.tile .v { font: 900 clamp(34px, 4.6vw, 52px)/1 var(--font-display); font-stretch: 75%; color: var(--gold); font-variant-numeric: tabular-nums; }
+.tile .k { color: var(--muted); font-size: 15px; }
+.note { margin-top: 14px; color: var(--muted); font-size: 14px; }
+
+/* assistant transcript, styled like the app */
+.split { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: 40px; margin-top: 36px; align-items: start; }
+.chat { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 22px; display: grid; gap: 14px; font-size: 15px; }
+.chat .q { font-weight: 600; }
+.chat ol { margin: 0; padding: 0; list-style: none; display: grid; gap: 6px; color: var(--muted); font-size: 14px; }
+.chat ol li::before { content: "· "; }
+.chat .seek { color: var(--a); text-decoration: underline; text-underline-offset: 3px; }
+.chat .ans { color: var(--fg); }
+.chat .ver { font: 500 13px/1 var(--font-mono); color: var(--muted); }
+.chat .ver b { color: var(--ok); font-weight: 500; }
+.tools { margin: 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+.tools li { display: grid; grid-template-columns: 170px minmax(0, 1fr); gap: 12px; padding-bottom: 10px; border-bottom: 1px solid var(--line); font-size: 15px; }
+.tools code { font: 500 13px/1.7 var(--font-mono); color: var(--fg); }
+.tools span { color: var(--muted); }
+
+/* meta table */
+.tablebox { overflow-x: auto; margin-top: 32px; border: 1px solid var(--line); border-radius: 16px; }
+table { border-collapse: collapse; width: 100%; min-width: 560px; font-size: 15px; }
+th, td { text-align: left; vertical-align: top; padding: 16px 20px; border-bottom: 1px solid var(--line); }
+tr:last-child td { border-bottom: 0; }
+th { font: 500 12px/1 var(--font-mono); letter-spacing: 1px; text-transform: uppercase; color: var(--muted); background: var(--band); }
+td:first-child { font-weight: 600; white-space: nowrap; }
+td code { font: 500 14px var(--font-mono); }
+
+/* coach */
+blockquote { margin: 32px 0 0; padding: 0; font: 600 clamp(22px, 2.8vw, 30px)/1.35 var(--font-display); font-stretch: 92%; max-width: 30ch; }
+blockquote::before { content: "“"; color: var(--b); }
+blockquote::after { content: "”"; color: var(--b); }
+.cite { margin-top: 14px; color: var(--muted); font-size: 15px; }
+.flag { margin-top: 28px; display: inline-flex; gap: 12px; align-items: baseline; padding: 14px 18px; border-left: 3px solid var(--gold); background: var(--band); border-radius: 0 12px 12px 0; }
+
+/* limits */
+.limits { margin: 28px 0 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.limits li { display: grid; gap: 8px; align-content: start; }
+.limits p { color: var(--muted); font-size: 15px; }
+
+footer { border-top: 1px solid var(--line); padding-block: 40px 56px; color: var(--muted); font-size: 14px; }
+footer .wrap { display: grid; gap: 12px; }
+footer nav { display: flex; gap: 20px; flex-wrap: wrap; }
+
+@media (max-width: 820px) {
+  section { padding-block: 52px; }
+  .step, .split { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+  .step:nth-child(even) .copy { order: 0; }
+  .tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .tile:last-child:nth-child(odd) { grid-column: 1 / -1; } /* an odd tile out fills its row */
+  .limits { grid-template-columns: minmax(0, 1fr); }
+  .tools li { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+}
+@media (max-width: 460px) {
+  .tiles { grid-template-columns: minmax(0, 1fr); }
+  .pair { grid-template-columns: minmax(0, 1fr); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .btn { transition: border-color .15s, transform .15s; }
+  .btn:hover { transform: translateY(-1px); }
+}
+</style>
+</head>
+<body>
+<header class="wrap top">
+  <a class="brand" href="https://github.com/EmirCobanOfficial/courtsense">
+    <svg width="36" height="36" viewBox="0 0 132 132" aria-hidden="true"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1677ff"/><stop offset="1" stop-color="#d46b08"/></linearGradient></defs><rect width="132" height="132" rx="34" fill="url(#lg)"/><g fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round"><rect x="40" y="24" width="52" height="84" rx="4"/><path d="M40 66H92M66 45V87M40 45H92M40 87H92"/></g><circle cx="81" cy="55" r="8" fill="#ffc857"/></svg>
+    <span>Court<b>Sense</b></span>
+  </a>
+  <nav aria-label="Proje bağlantıları">
+    <a href="https://youtu.be/mXLhQJ-pKrA">Demo video</a>
+    <a href="https://github.com/EmirCobanOfficial/courtsense">Kod</a>
+    <a href="https://x.com/Emir897785/status/2115486501047865471">X'te</a>
+    <details class="lang"><summary title="Language">🌐 <span>Türkçe</span></summary><ul><li><a href="../" hreflang="en" lang="en">English</a></li><li><a href="../tr/" hreflang="tr" lang="tr" aria-current="page">Türkçe</a></li><li><a href="../es/" hreflang="es" lang="es">Español</a></li><li><a href="../pt-br/" hreflang="pt-BR" lang="pt-BR">Português (Brasil)</a></li><li><a href="../hi/" hreflang="hi" lang="hi">हिन्दी</a></li><li><a href="../zh-cn/" hreflang="zh-CN" lang="zh-CN">中文（简体）</a></li><li><a href="../ja/" hreflang="ja" lang="ja">日本語</a></li><li><a href="../de/" hreflang="de" lang="de">Deutsch</a></li><li><a href="../ru/" hreflang="ru" lang="ru">Русский</a></li></ul></details>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap stack">
+      <p class="eyebrow">Meta Global AI Developer Hackathon · Indie Developer kategorisi</p>
+      <h1>Tek kamera.<br><span>Gerçek hareket verisi.</span></h1>
+      <p class="lead">CourtSense, bir tenis antrenörünün sıradan antrenman videosunu her oyuncu için mesafeye, hıza, kort konumuna ve ısı haritasına dönüştürür. Oyuncuları Meta SAM 3.1 takip eder; bir Muse Spark ajanı antrenörün sorularını yanıtlar ve verdiği her sayıyı kontrol eder.</p>
+      <div class="ctas">
+        <a class="btn primary" href="https://youtu.be/mXLhQJ-pKrA">▶ 3 dakikalık demoyu izle</a>
+        <a class="btn" href="https://github.com/EmirCobanOfficial/courtsense">Kodu gör</a>
+      </div>
+      <figure class="shot">
+        <img src="../img/hero.jpg" width="1600" height="900" alt="Antrenörümüzün antrenman videosu, iki oyuncunun üzerinde SAM 3.1 maskeleriyle; yanında her oyuncunun nerede durduğunu gösteren kuşbakışı kort">
+        <figcaption>Antrenörümüzün videosunda SAM 3.1 maskeleri; iki oyuncu da kuşbakışı bir korta metre cinsinden yerleştirildi. <span class="legend"><span><i class="dot" style="background:var(--a)"></i>Oyuncu A</span><span><i class="dot" style="background:var(--b)"></i>Oyuncu B</span></span></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap stack">
+      <p class="eyebrow">Sorun</p>
+      <h2>Antrenörler her antrenmanı çekiyor. Sonra sadece izleyebiliyorlar.</h2>
+      <p class="lead">Bir oyuncunun ne kadar koştuğunu, ne kadar hızlı olduğunu ve nerede durduğunu bilmek genellikle çoğu kulübün karşılayamayacağı takip sistemleri gerektirir. Antrenörümüzün dip çizginin arkasında tek bir kamerası var. CourtSense tam olarak bununla çalışır.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <p class="eyebrow">Nasıl çalışır</p>
+      <h2>Antrenörün videosundan metre cinsinden korta</h2>
+      <ol class="steps">
+        <li class="step">
+          <div class="copy"><span class="num">1</span><h3>Antrenmanı yükle</h3><p>Antrenör videonun analiz edilecek bölümünü seçer. Tek bir akışlı SAM 3.1 isteği iki oyuncuyu bulur ve her karede takip eder. 12 dakikalık bir antrenman 10,688 kare tutar ve yaklaşık $2.14'a mal olur.</p></div>
+          <figure class="shot"><img src="../img/upload.jpg" width="1280" height="720" alt="Analiz başlangıç ve bitiş zamanlarıyla yükleme formu"></figure>
+        </li>
+        <li class="step">
+          <div class="copy"><span class="num">2</span><h3>Kortta dört noktaya tıkla</h3><p>Tekler çizgilerinin kesiştiği dört noktaya tıklamak bir homografi kurar. Bundan sonra her adım, kortta metre cinsinden bir konumdur ve yakın dip çizginin ortasından ölçülür (tekler kortu 8.23 m genişliğinde ve 23.77 m uzunluğundadır).</p></div>
+          <figure class="shot"><img src="../img/calibrate.jpg" width="1280" height="720" alt="Kort kalibrasyonu: dört tıklamadan sonra kortun üzerine çizilen yeşil çizgiler"></figure>
+        </li>
+        <li class="step">
+          <div class="copy"><span class="num">3</span><h3>Sayıları oku</h3><p>Mesafe, ortalama ve en yüksek hız; dip çizginin gerisinde, dip çizgide, orta sahada ve filede geçen süre; sol/orta/sağ dağılımı ve her oyuncu için bir ısı haritası. Bir ölçüm kaba olduğunda değer kesinmiş gibi görünmez, ~ ile işaretlenir ve bölge payları bir aralıkla verilir.</p></div>
+          <div class="pair">
+            <figure class="shot"><img src="../img/metrics.jpg" width="1280" height="720" alt="Oyuncu A ve Oyuncu B için metrik tablosu"></figure>
+            <figure class="shot"><img src="../img/heatmap.jpg" width="1280" height="720" alt="Her oyuncunun zamanını nerede geçirdiğini gösteren kuşbakışı ısı haritaları"></figure>
+          </div>
+        </li>
+        <li class="step">
+          <div class="copy"><span class="num">4</span><h3>Antrenör asistanına sor</h3><p>Bir Muse Spark ajanı kendi araçlarını seçer, videoyu bahsettiği ana atlatır ve o klibi kendisi izleyebilir. Antrenör soruyu yazabilir ya da sesle sorabilir. Cevaptaki her sayı, antrenör görmeden önce veriyle karşılaştırılır; antrenör raporundaki her sayı da öyle.</p></div>
+          <figure class="shot"><img src="../img/agent.jpg" width="1024" height="373" alt="Antrenör asistanının uygulamadaki cevabı, adımları ve “Verified” rozetiyle"></figure>
+        </li>
+        <li class="step">
+          <div class="copy"><span class="num">5</span><h3>Raporu al</h3><p>Her antrenmandan sonra Muse Spark yalnızca ölçülen sayılardan kısa bir rapor yazar; İngilizce ya da antrenörümüzün dili olan Türkçe.</p></div>
+          <figure class="shot"><img src="../img/report.jpg" width="1280" height="720" alt="Muse Spark'ın yazdığı antrenör raporu"></figure>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <p class="eyebrow">Gerçek bir antrenman</p>
+      <h2>CourtSense'in ölçtükleri</h2>
+      <div class="tiles">
+        <div class="tile"><span class="v">10,688</span><span class="k">SAM 3.1'in takip ettiği kare</span></div>
+        <div class="tile"><span class="v">$2.14</span><span class="k">12 dakikalık bir antrenman için SAM 3.1 maliyeti</span></div>
+        <div class="tile"><span class="v">567 m</span><span class="k">Oyuncu A'nın koştuğu mesafe</span></div>
+        <div class="tile"><span class="v">67%</span><span class="k">Oyuncu A'nın dip çizginin gerisinde geçirdiği süre</span></div>
+        <div class="tile"><span class="v">3.81 m/s</span><span class="k">Oyuncu A'nın en hızlı bir saniyelik koşusu, 6:44'te</span></div>
+        <div class="tile"><span class="v">52–80%</span><span class="k">Oyuncu B'nin dip çizginin gerisinde geçirdiği süre; uzak tarafta derinlik kaba olduğu için aralık olarak</span></div>
+        <div class="tile"><span class="v">~0.5 m</span><span class="k">Oyuncu A'nın konum hatası: yöntemi kurarken kullanılmayan, elle işaretlenmiş 30 karede 0.46 m</span></div>
+        <div class="tile"><span class="v">1.35 → 1.08 m</span><span class="k">Uzaktaki oyuncunun konum hatası, gönderim sonrası düzeltmemizden önce ve sonra; düzeltmeyi kurarken kullanılmayan karelerde</span></div>
+        <div class="tile"><span class="v">8 / 8</span><span class="k">asistan cevabı canlı bir testte doğrulandı ve doğru çıktı; her sayı kontrol edildi</span></div>
+      </div>
+      <p class="note">Antrenörümüzün antrenmanından. Kamera alçakta olduğu için file uzaktaki oyuncunun ayaklarını kapatıyor; bu yüzden uzaktaki oyuncunun sayıları kaba olarak işaretli ve aralıklarla veriliyor. Hatalar, elle işaretlenmiş ayak konumlarına göre ölçüldü. Ayrıntılar <a href="https://github.com/EmirCobanOfficial/courtsense#accuracy-measured">depoda</a>.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <p class="eyebrow">Antrenör asistanının içi</p>
+      <h2>Nasıl çalıştığını gösterir, sayı uyduramaz</h2>
+      <div class="split">
+        <div class="chat" aria-label="Antrenör asistanının gerçek bir çalıştırması">
+          <p class="q">Where did Player A run fastest? Show me that moment and describe what happens.</p>
+          <ol>
+            <li>Looking for moments: fastest moments (Player A)</li>
+            <li>Jumping the video to 6:44</li>
+            <li><span class="seek">▶ 6:44 · Player A fastest run</span></li>
+            <li>Watching 5 s from 6:44</li>
+            <li>Reading the metrics (Player A)</li>
+            <li>Checking the answer</li>
+          </ol>
+          <p class="ans">Player A's fastest 1-s run was at <span class="seek">6:44</span> at 3.81 m/s.</p>
+          <p class="ver"><b>✓ Verified</b> · 5 steps · ~$0.019</p>
+        </div>
+        <div class="stack">
+          <p class="lead">Uygulamada kaydedilmiş gerçek bir çalıştırma. Ajan her turda bir araç kullanır, en fazla sekiz tur:</p>
+          <ul class="tools">
+            <li><code>get_metrics</code><span>oyuncu başına antrenman metrikleri, güvenilirlik notlarıyla</span></li>
+            <li><code>find_moments</code><span>en hızlı koşular, en uzun koşular ve fileye gelişler, video zamanıyla</span></li>
+            <li><code>minute_breakdown</code><span>dakika başına metre</span></li>
+            <li><code>show_moment</code><span>antrenörün videosunu bir zamana atlatır</span></li>
+            <li><code>look_at_clip</code><span>2–8 saniye keser ve Muse Spark'a ne olduğunu sorar</span></li>
+            <li><code>answer</code><span>son cevap: her sayı bir iddia olarak listelenir ve antrenmanın verisiyle karşılaştırılır; uymazsa modele geri gider</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <p class="eyebrow">İçinde Meta AI</p>
+      <h2>Her Meta modeli burada ne yapıyor</h2>
+      <div class="tablebox">
+        <table>
+          <thead><tr><th>Meta modeli ya da paketi</th><th>CourtSense'te ne yapıyor</th></tr></thead>
+          <tbody>
+            <tr><td>SAM 3.1</td><td>"tennis player" metin istemiyle bir antrenmanın her karesinde iki oyuncuyu bulur ve takip eder; Meta Model API üzerinden tek bir akışlı istekle.</td></tr>
+            <tr><td>Muse Spark 1.3</td><td>Antrenör asistanını çalıştırır: araçlarını seçer, kısa klipleri video girdisiyle izler, İngilizce ya da Türkçe cevap verir. Antrenör raporunu da yazar.</td></tr>
+            <tr><td>Muse Voice Transcribe</td><td>Antrenörün asistana sesle, İngilizce ya da Türkçe soru sormasını sağlar. Sözler, sormadan önce kontrol edilsin diye soru kutusuna düşer.</td></tr>
+            <tr><td><code>@meta-sam/parser</code></td><td>SAM 3.1'in akış çıktısını kare başına kutulara ve maskelere çevirir.</td></tr>
+            <tr><td><code>@meta-sam/react</code>, <code>@meta-sam/graphics</code></td><td>Antrenmanı tarayıcıda oynatır; her oyuncunun maskesi kendi renginde çizilir.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <p class="eyebrow">Gerçek bir antrenör için</p>
+      <h2>Antrenörümüzün kendi antrenmanlarıyla yapıldı</h2>
+      <blockquote>Antrenmanlarımızı hep kameraya çekiyorum ama şimdiye kadar sadece izleyebiliyordum. CourtSense ile oyuncunun ne kadar koştuğunu, kortta nerede durduğunu sayılarla görüyorum. Bundan sonraki antrenmanları da bu verilere göre planlayacağım.</blockquote>
+      <p class="cite">Antrenörümüz, bir sesli mesajda. Antrenmanı antrenörümüz çekti; iki oyuncunun da izni var.</p>
+      <p class="flag"><strong>Genel bir spor analiz aracı değil.</strong><span>Kendi antrenörümüz için, merkezinde SAM 3.1 ile geliştirildi.</span></p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <p class="eyebrow">Dürüst sınırlar</p>
+      <h2>Henüz yapamadıkları</h2>
+      <ul class="limits">
+        <li><h3>Top takibi yok</h3><p>Bizim görüntülerimizde SAM 3.1 tavan ışıklarını ve tabelaları topla karıştırdı; bu yüzden henüz vuruş ya da skor istatistiği yok.</p></li>
+        <li><h3>Uzak tarafta kaba derinlik</h3><p>Kamera alçakta olduğunda uzaktaki oyuncunun ileri-geri konumu kabadır: elle işaretlenmiş karelerde yaklaşık 1 m hata. Uygulama bunu işaretler ve tahmin yürütmek yerine bölge aralıkları verir. Sol ve sağ güvenilir kalır.</p></li>
+        <li><h3>Kamera kayması</h3><p>Uzun bir antrenman boyunca kamera gimbalının yavaş kayması henüz düzeltilmiyor.</p></li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Meta Global AI Developer Hackathon sırasında geliştirildi, 26 Ekim – 4 Kasım 2026. Gönderilen sürüm GitHub'daki <code>hackathon-submission</code> etiketidir. Kod MIT lisanslıdır; Meta'nın <code>@meta-sam</code> paketleri SAM Lisansı altındadır.</p>
+    <nav aria-label="Alt bilgi bağlantıları">
+      <a href="https://github.com/EmirCobanOfficial/courtsense">GitHub</a>
+      <a href="https://youtu.be/mXLhQJ-pKrA">Demo video</a>
+      <a href="https://x.com/Emir897785/status/2115486501047865471">X gönderisi</a>
+    </nav>
+  </div>
+</footer>
+</body>
+</html>
